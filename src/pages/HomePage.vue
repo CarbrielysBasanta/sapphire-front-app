@@ -73,14 +73,33 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { IndexLayout } from '../layouts/MainLayout.vue'
-
+import gql from 'graphql-tag'
+// import { apolloClient } from '../utils/apollo.js'
+import { useQuery } from '@vue/apollo-composable'
+import { getData } from '../composables/useQuery'
+const CHARACTERS_QUERY = gql`
+  query Characters {
+    characters {
+      results {
+        id
+        name
+        image
+      }
+    }
+  }
+`
 export default {
   name: 'HomePage',
   setup() {
+    const { query } = getData()
     const leftDrawerOpen = ref(false)
-
+    // const { result, loading, error } = useQuery(CHARACTERS_QUERY);
+    // console.log(result, loading, error);
+    onMounted(() => {
+      query()
+    })
     return {
       leftDrawerOpen,
       toggleLeftDrawer() {

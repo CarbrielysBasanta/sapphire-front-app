@@ -12,20 +12,29 @@
     "start": "quasar dev"
   },
   "dependencies": {
-    "@quasar/extras": "^1.0.0",
+    "@apollo/client": "^3.7.15",
+    "@quasar/extras": "^1.16.4",
+    "@vue/apollo-composable": "^4.0.0-beta.5",
+    "apollo-cache-inmemory": "^1.6.6",
+    "apollo-client": "^2.6.10",
+    "apollo-link": "^1.2.14",
+    "apollo-link-http": "^1.5.17",
     "core-js": "^3.6.5",
+    "graphql": "^15.0.0",
+    "graphql-tag": "^2.12.6",
     "quasar": "^2.6.0",
     "vue": "^3.0.0",
+    "vue-apollo": "^3.1.0",
     "vue-router": "^4.0.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.14",
+    "@quasar/app-webpack": "^3.0.0",
     "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-vue": "^9.0.0",
     "eslint-webpack-plugin": "^3.1.1",
-    "eslint-config-prettier": "^8.1.0",
-    "prettier": "^2.5.1",
-    "@quasar/app-webpack": "^3.0.0"
+    "prettier": "^2.5.1"
   },
   "browserslist": [
     "last 10 Chrome versions",
