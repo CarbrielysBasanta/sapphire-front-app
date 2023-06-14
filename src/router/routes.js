@@ -7,7 +7,31 @@ const routes = [
     children: [
       // UserHome will be rendered inside User's <router-view>
       // when /user/:id is matched
-      { path: '', component: () => import('pages/HomePage.vue') },
+      { path: '', component: () => import('pages/LoginPage.vue') },
+
+      // ...other sub routes
+    ],
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      // UserHome will be rendered inside User's <router-view>
+      // when /user/:id is matched
+      { path: '', component: () => import('pages/RegisterPage.vue') },
+
+      // ...other sub routes
+    ],
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: () => import('layouts/HomeLayout.vue'),
+    children: [
+      // UserHome will be rendered inside User's <router-view>
+      // when /user/:id is matched
+      { path: '', component: () => import('pages/HomeMenuPage.vue') },
 
       // ...other sub routes
     ],

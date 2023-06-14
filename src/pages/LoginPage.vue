@@ -3,24 +3,27 @@
   <div class=" row col-12 absolute" style=" height: 100vh; ">
     <div class=" q-pa-md col-xs-12 col-sm-12 full-height row justify-center col-md-6">
 
-      <q-card class="form-login row col-md-6 col-sm-8 col-xs-12 q-pa-md text-white"
-        style=" margin-right: 18%; margin-top: 120px; height: 80%;">
-        <q-card-section class="row col-12 justify-center">
-          <div class="logo">
-            <q-img src="../img/LogoDifuminado.png"></q-img>
+      <q-card class="form-login row col-md-6 col-sm-8 col-xs-12 q-pa-xs text-white"
+        style=" margin-right: 0%; margin-top: 100px; height: 80%;">
+        <q-card-section class="row col-12 justify-center items-center content-center full-height">
+          <div class="column col-12 justify-center items-center">
+            <div class="logo">
+              <q-img src="../img/LogoDifuminado.png"></q-img>
+            </div>
+            <div class=" text-h5 text-bold q-my-sm">Inicia sesión en Sapphire
+            </div>
           </div>
-          <div class=" text-h5 text-bold q-my-md">Inicia sesión en Sapphire
-          </div>
-          <div class="q-mt-sm row justify-center" style="width: 90%;">
-            <q-input class="email q-mb-sm" rounded outlined bg-color="grey-2" v-model="name" label="Correo o usuario"
-              style="min-width: 240px" />
+          <div class="q-mt-smf column justify-center items-center" style="width: 100%;">
+            <q-input class="email q-mb-sm" rounded outlined bg-color="grey-2" v-model="nickName" label="Correo o usuario"
+              style="min-width: 75%" />
 
-            <q-input class="email q-my-sm" rounded outlined bg-color="grey-2" type="password" v-model="age"
-              label="Contraseña" style="min-width: 240px" />
+            <q-input class="email q-my-sm" rounded outlined bg-color="grey-2" type="password" v-model="password"
+              label="Contraseña" style="min-width: 74%" />
 
             <q-btn class="email q-mt-sm text-weight-light text-italic" rounded unelevated color="primary"
-              text-color="white" label="Entrar" style="width: 40%" />
+              text-color="white" label="Entrar" style="width: 40%" @click="login" />
           </div>
+
           <p class="row items-center justify-center" style="width: 88%;">
             <span class="col-5">
               <hr>
@@ -32,16 +35,18 @@
               <hr>
             </span>
           </p>
-          <q-input rounded outlined bg-color="grey-2" v-model="name" label="Inicia sesión con Google"
-            style="min-width: 240px; " />
-          <p class="row items-center justify-center q-mt-md" style="width: 88%;">
-            <span class="col-7 text-weight-light">
-              ¿No tienes una cuenta?
-            </span>
-            <span class="col-3 text-bold text-italic">
-              Regístrate
-            </span>
-          </p>
+          <div class="column col-12 justify-center items-center">
+            <q-input rounded outlined bg-color="grey-2" v-model="name" label="Inicia sesión con Google"
+              style="min-width: 60%; " />
+            <p class="row items-center justify-center q-mt-sm" style="width: 88%;">
+              <span class="col-7 text-weight-light">
+                ¿No tienes una cuenta?
+              </span>
+              <a href="/#/Register" class="col-3 text-bold text-italic text-white" style="text-decoration: none;">
+                Regístrate
+              </a>
+            </p>
+          </div>
         </q-card-section>
 
       </q-card>
@@ -50,7 +55,7 @@
     <div class=" full-height row justify-center col-md-6 xs-hide sm-hide">
       <div style="margin-top: 100px;" class=" row col-12 justify-center q-pa-md">
 
-        <q-card class="right-side row col-md-7 col-sm-8 col-xs-12 q-pa-md text-white"
+        <div class="right-side row col-md-7 col-sm-8 col-xs-12 q-pa-md text-white"
           style=" margin-left: 18%; margin-top: 30px; height: 80%;">
           <div class="row col-12 justify-center">
             <div class="logo2">
@@ -64,7 +69,7 @@
             </div>
           </div>
 
-        </q-card>
+        </div>
 
       </div>
 
@@ -76,32 +81,21 @@
 import { ref, onMounted } from 'vue'
 import { IndexLayout } from '../layouts/MainLayout.vue'
 import gql from 'graphql-tag'
-// import { apolloClient } from '../utils/apollo.js'
-import { useQuery } from '@vue/apollo-composable'
 import { getData } from '../composables/useQuery'
-const CHARACTERS_QUERY = gql`
-  query Characters {
-    characters {
-      results {
-        id
-        name
-        image
-      }
-    }
-  }
-`
+
 export default {
   name: 'HomePage',
   setup() {
-    const { query } = getData()
+    const { query, login, nickName, password } = getData()
     const leftDrawerOpen = ref(false)
-    // const { result, loading, error } = useQuery(CHARACTERS_QUERY);
-    // console.log(result, loading, error);
     onMounted(() => {
       query()
     })
     return {
       leftDrawerOpen,
+      nickName,
+      password,
+      login,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value
       }
@@ -111,9 +105,9 @@ export default {
 </script>
 
 <style >
-@media screen and (min-width: 600px) {
+@media screen and (max-width: 1024px) {
   .form-login {
-    margin-right: 0px;
+    margin: 0px auto;
   }
 }
 

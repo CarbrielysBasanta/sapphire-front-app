@@ -24,8 +24,8 @@
           </div>
           <div class="col-md-6 col-sm-6 col-xs-6">
             <div class="row col-12 justify-end">
-              <q-btn flat dense label="Inicio" class="q-mx-md text-weight-light" />
-              <q-btn flat dense label="Registrarse" class="q-mx-md text-weight-light" />
+              <q-btn flat dense label="Inicio" to="/" class="q-mx-md text-weight-light" />
+              <q-btn flat dense label="Registrarse" to="/Register" class="q-mx-md text-weight-light" />
             </div>
 
           </div>
@@ -45,7 +45,6 @@
 
 <script>
 import { ref } from 'vue'
-import { HomePage } from '../pages/HomePage.vue'
 
 export default {
   setup() {
